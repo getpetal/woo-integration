@@ -42,9 +42,9 @@ class WooIntegration
         )
       );
 
-      \WC_Install::create_pages();
-
       add_option('secret-api-key-generated', $wpdb->insert_id);
+
+      \WC_Install::create_pages();
     }
 
     public static function callback_handler(){
