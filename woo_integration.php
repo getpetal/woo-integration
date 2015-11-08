@@ -56,7 +56,7 @@ class WooIntegration
 
 }
 
-add_action('admin_init', ['WooIntegration','generate_key']);
+add_action('init', ['WooIntegration','generate_key']);
 add_action( 'woocommerce_api_callback', ['WooIntegration','callback_handler'] );
 
 
