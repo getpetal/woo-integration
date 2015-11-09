@@ -43,6 +43,9 @@ class WooIntegration
       );
 
       add_option('secret-api-key-generated', $wpdb->insert_id);
+      // This is bad!!!
+      add_option('secret-api-key-generated-consumer', $consumer_key);
+
 
       \WC_Install::create_pages();
     }
@@ -51,6 +54,7 @@ class WooIntegration
       global $wpdb;
 
       $keys = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}woocommerce_api_keys WHERE key_id = %d", get_option('secret-api-key-generated') ) );
+      $keys->consumer_key = get_option('secret-api-key-generated-consumer');
       return $keys;
     }
 
